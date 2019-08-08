@@ -1,0 +1,34 @@
+//Tribonacci it is longer version of Fibonacci, for example, if we
+// have with Fibonacci 2 numbers for sum, that with Tribonacci we have 3 numbers
+// before current
+
+//for use this we must to call tribonacci function with first 3 nums and length of array 
+function tribonacci(signature, n) {
+    //if n iquels 0 return empty array..  
+    if (n == 0) return new Array(0);
+    let res = new Array(n);
+    //save first 3 values
+    let first = signature[0];
+    let second = signature[1];
+    let third = signature[2];
+
+    //start getting array
+    for (let i = 0; i < res.length; i++) {
+        // if our array more shortly then 3 we have to return our array 
+        if (i < 3) {
+            res[i] = signature[i];
+            continue;
+        }
+        res[i] = first + second + third;
+        first = res[i - 2];
+        second = res[i - 1];
+        third = res[i];
+    }
+
+
+    return res;
+}
+
+
+console.log(tribonacci([1, 0, 1], 10));
+console.log(tribonacci([0, 1, 0], 10));
